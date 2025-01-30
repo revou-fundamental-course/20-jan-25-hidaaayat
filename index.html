@@ -1,11 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator BMI</title>
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <!-- HTML2PDF untuk menyimpan/download PDF -->
+  <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+      integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/bebc371065.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <p>hidayat</p>
+  <header class="main-header">
+    <h1>Kalkulator BMI</h1>
+  </header>
+
+    <main>
+    <!--Konten-->
+      <content class="main-container">
+        <!--page kiri-->
+        <section class="container-item">
+            <!-- Introduction -->
+                <p>
+                    Selamat datang di Kalkulator BMI! 
+                    <br/>
+                    Kami senang Anda di sini. 
+                    Dengan alat ini, Anda dapat dengan mudah menghitung Indeks Massa Tubuh Anda dan mendapatkan pemahaman yang lebih baik tentang status kesehatan Anda. 
+                    Cukup masukkan tinggi dan berat badan Anda, dan kami akan membantu Anda menemukan informasi yang Anda butuhkan untuk mencapai tujuan kesehatan Anda. 
+                    Mari kita mulai perjalanan menuju hidup yang lebih sehat bersama!"
+                </p>
+
+            <!--From-->
+            <div class="wrapper">
+             <form id="myForm" action="">
+              <div class="box-wrapper">
+                <label>Jenis Kelamin</label> <br/>
+                  <div id="gender">
+                    <input class="input-gender" type="radio" name="gender" value="Laki-Laki" id="man" />
+                    <label for="man">Laki-Laki</label>
+                    <input type="radio" name="gender" value="Perempuan" id="female" />
+                    <label for="female">Perempuan</label> <br/>
+                  </div>
+              </div>
+
+              <div class="box-wrapper">
+                <label for="berat-badan">Usia (tahun)</label> <br/>
+                <input type="number" class="input-kg" placeholder="Masukkan Usia Anda" nama="usia" id="usia"/>
+              </div>
+              <div class="box-wrapper">
+                <label for="berat-badan">Berat Badan (kg)</label> <br/>
+                <input type="number" class="input-kg" placeholder="Masukkan Berat Badan Anda" name="berat-badan" id="berat-badan" />
+              </div>
+              <div class="box-wrapper">
+                <label for="berat-badan">Tinggi Badan (cm)</label> <br />
+                <input type="number" class="input-kg" placeholder="Masukkan Tinggi Badan Anda" name="tinggi-badan" id="tinggi-badan" />
+              </div>
+             </form>
+            <!--Tombol hitung dan reset-->
+            <button type="submit" class="button button1" id="hitung">Hitung BMI</button>
+            <button type="reset" value="Reset" class="button button2" id="resetButton">Reset</button>
+            </div>
+                <h2>Kegunaan Fitur</h2>
+                    <p>1. Menghitung Berat Badan</p>
+                    <p>2. Menetukan Kategori Berat Badan atau Tidak</p>
+                    <p>3. Mempersiapkan program penurunan berat badan</p>
+                <br/>
+                <p>
+                    Kalkulator ini hanya boleh digunakan oleh orang dewasa (wanita hamil atau menyusui tidak boleh mengandalkan pembacaan BMI ini) 
+                    dan tidak ada tindakan yang harus diambil berdasarkan nilainya selain berkonsultasi dengan orang yang
+                    memenuhi syarat seperti dokter.
+                </p>
+                <br/>
+                <p>
+                    Kalkulator akan memberi Anda gambaran tentang perbandingan berat badan Anda dengan nilai umum.
+                    Index Massa Tubuh atau BMI dihitung sebagai berat badan Anda (dalam kilogram) dibagi dengan kuadrat tinggi badan Anda (dalam meter)
+                    atau BMI = Kg / m<sup>2</sup>.
+                </p>
+        </section>
+        <!--Page Kanan-->
+        <section id="result" class="container-item">
+            <h2>Hasil</h2>
+            <!--konten ditampilakan dengan java-->
+            <div class="wrapper justify">
+              <p id="result-status"></p>
+              <h1 id="result-number">0</h1>
+              <p id="result-text"></p>
+              <!--tombol download as pdf-->
+              <button class="button button1" id="button-download" download>Download Hasil BMI</button>
+            </div>
+            <p id="result-ket-number"></p>
+            <p id="result-ket-text"></p>
+            <p id="result-ket-saran"></p>
+            <div class="justify">
+              <!--tombol konsultasi dan registrasi ahli gizi-->
+              <button class="button button3">Konsultasi Ahli Gizi Via Aplikasi</button>
+              <button class="button button1">Registrasi Online Ahli Gizi</button>
+            </div>
+              <p>
+                BMI tidak sepenuhnya mewakili diagnosis seluruh dari kesehatan tubuh dan resiko penyakit seseorang. 
+                Anda perlu konsultasi lebih lanjut mengenai resiko dan kekhawatiran Anda terkait dengan berat badan Anda.
+              </p>
+            <div class="wrapper justify">
+              <p id="result-penyakit"></p>
+              <div class="justify">
+                <!-- Tombol Konsultasi dan Registrasi dokter-->
+                <button class="button button3">Konsultasi Dokter Via Aplikasi</button>
+                <button class="button button1">Registrasi Online Sekarang</button>
+              </div>
+            </div>
+            <div class="justify">
+              <!-- Tombol Download Aplikasi -->
+            <p>Download Aplikasi</p>
+            <a href="#" class="img-button img-playstore">Google</a>
+            <a href="#" class="img-button img-appstore">AppStore</a>
+            </div>
+        </section>
+      </content>
+    </main>
+    <!-- Footer -->
+    <footer class="justify">
+      <p>Copyright by Hidayat Priyatama &copy; 2025. Thank you for visiting</p>
+      <div class="sosmed">
+        <a href="https://github.com/hidaaayat" class="sosmed"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/hidayatpriyatama" class="sosmed"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/hidaaayat_/" class="sosmed"><i class="fa-brands fa-instagram"></i></a>
+        <a href="mailto:hidayat.priyatama17@gmail.com" class="sosmed"><i class="fa-solid fa-envelope-open"></i></a>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
